@@ -8,8 +8,8 @@ const app= express();
 
 
 async function startServer() {
-    await connectToDb();   // wait for DB connection
-    // now safe to start server
+    await connectToDb();   
+    
     app.listen( process.env.PORT, ()=>{
         console.log("Server has started listening to port "+ process.env.PORT)
     })
