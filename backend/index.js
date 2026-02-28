@@ -1,9 +1,15 @@
 const express= require('express');
 require('dotenv').config();
 const connectToDb= require('./config/db_connection');
+const feedbackRoutes= require('./routes/feedbackRoute')
+const adminRoutes= require('./routes/adminRoute')
 const app= express();
 
-
+ app.use(express.json());
+ 
+ //routes
+ app.use('/api/feedback', feedbackRoutes);
+ app.use('/api/admin', adminRoutes);
 
 
 
