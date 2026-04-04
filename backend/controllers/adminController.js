@@ -35,7 +35,7 @@ const registerAdmin = async (req, res)=>{
           if (!match) return res.status(400).json({ error: 'Invalid credentials' });
       
           // Implementation of  JWT
-          const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' });
+    const token = jwt.sign({ id: admin._id, email: admin.email }, process.env.JWT_SECRET, { expiresIn: '1h' });
       
           res.json({ message: 'Login successful', token });
         } catch (err) {
