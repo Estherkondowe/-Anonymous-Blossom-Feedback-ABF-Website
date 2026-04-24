@@ -34,7 +34,7 @@ const registerAdmin = async (req, res)=>{
           const match = await bcrypt.compare(password, admin.password);
           if (!match) return res.status(400).json({ error: 'Invalid credentials' });
       
-          // Implementation of  JWT
+          // Implementation of the JWT
     const token = jwt.sign({ id: admin._id, email: admin.email }, process.env.JWT_SECRET, { expiresIn: '1h' });
       
           res.json({ message: 'Login successful', token });
@@ -43,7 +43,7 @@ const registerAdmin = async (req, res)=>{
         }
       };
       
-      // 3. Admin profile 
+      // 3. profile 4 admin
       const getProfile = async (req, res) => {
         try {
           const admin = await Admin.findById(req.admin.id).select('-password');

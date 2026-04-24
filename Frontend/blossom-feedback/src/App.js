@@ -1,13 +1,21 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import LandingPage from './pages/LandingPage.jsx';
+import FeedbackForm from './pages/FeedbackForm.jsx';
+import AdminLogin from './pages/AdminLogin.jsx';
+import AdminDashboard from './pages/AdminDashboard.jsx';
+import AdminRegister from './pages/AdminRegister.jsx'; 
+import ProtectedRoute from './components/ProtectedRoute.jsx';
 
 
 function  App(){
   return (
      <BrowserRouter>
       <Routes>
-        <Route path="/" element={<h1>Feedback Form Page</h1>} />
-        <Route path="/login" element={<h1>Admin Login Page</h1>} />
-        <Route path="/dashboard" element={<h1>Admin Dashboard Page</h1>} />
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/feedback" element={<FeedbackForm />} />
+        <Route path="/login" element={<AdminLogin />} />
+        <Route path="/dashboard" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
+        <Route path="/register" element={<AdminRegister/>}/>
       </Routes>
     </BrowserRouter>
   );

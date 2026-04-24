@@ -3,6 +3,7 @@ require('dotenv').config();
 
 
 const url= process.env.DB_URL;
+console.log("DB URL:", url);
 
 async function connectToDb() {
     try {

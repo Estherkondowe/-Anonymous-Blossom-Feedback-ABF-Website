@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './AdminLogin.css';
+import './AdminRegister.css';
 
-
-function AdminLogin(){
+function AdminRegister(){
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const [success, setSuccess] = useState('');
 
     const navigate = useNavigate();
 
-    const handleLogin = async (e) => {
+    const handleRegister = async (e) => {
         e.preventDefault();
 
         if (!email || !password) {
@@ -19,7 +19,7 @@ function AdminLogin(){
         }
 
         try {
-            const response = await fetch('http://localhost:3000/api/admin/login', {
+            const response = await fetch('http://localhost:3000/api/admin/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -30,10 +30,14 @@ function AdminLogin(){
             const data = await response.json();
 
             if (response.ok) {
-                localStorage.setItem('token', data.token);
-                navigate('/dashboard');
+                setSuccess('Registration successful! Redirecting to login...');
+                setError('');
+                // Redirect to login after 2 seconds
+                setTimeout(() => {
+                    navigate('/login');
+                }, 2000);
             } else {
-                setError(data.error || 'Login failed');
+                setError(data.error || 'Registration failed');
             }
 
         } catch (err) {
@@ -42,14 +46,14 @@ function AdminLogin(){
     };
 
     return(
-        <div className='login-container'>
-         <div className='login-card'>   
-        <div className='login-header'>
-            <h1>🌸 Welcome to the Login page Admin!</h1>
-            <p>Login to view and manage feedback</p>
-         </div>
-            <form onSubmit={handleLogin}>
-                <div className='form-group'>
+        <div className='register-container'>
+        <div className='register-card'>
+         <div className='register-header'>  
+            <h1>🌸 Admin Register</h1>
+            <p>Create your admin account</p>
+        </div> 
+            <form onSubmit={handleRegister}>
+                <div className='form-groug'>
                     <label>Email</label>
                     <input
                         type="email"
@@ -70,15 +74,21 @@ function AdminLogin(){
                 </div>
 
                 {error && <p className='error-msg'>{error}</p>}
+                {success && <p className='success-msg'>{success}</p>}
 
-                <button type="submit" className='login-btn'>Login🌸</button>
+                <button type="submit" className='register-btn'>Register🌸</button>
             </form>
-            <p className='register-link'>Don't have an account?
-            <span onClick={() => navigate('/register')}> Register here</span>
+
+            <p className='login-link'>Already have an account? 
+                <span 
+                    onClick={() => navigate('/login')} 
+                    style={{color: 'blue', cursor: 'pointer'}}>
+                     Login here
+                </span>
             </p>
         </div>
         </div>
     );
 }
 
-export default AdminLogin;
+export default AdminRegister;

@@ -3,9 +3,12 @@ require('dotenv').config();
 const connectToDb= require('./config/db_connection');
 const feedbackRoutes= require('./routes/feedbackRoute')
 const adminRoutes= require('./routes/adminRoute')
+const CORS= require('cors')
 const app= express();
 
+
  app.use(express.json());
+ app.use(CORS({origin: 'http://localhost:3001'}))
  
  //routes
  app.use('/api/feedback', feedbackRoutes);

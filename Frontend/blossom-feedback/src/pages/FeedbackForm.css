@@ -1,0 +1,65 @@
+.feedback-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 20px;
+}
+
+.feedback-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 40px;
+    width: 100%;
+    max-width: 550px;
+    box-shadow: 0 8px 30px rgba(233, 30, 140, 0.15);
+}
+
+.feedback-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.feedback-header h1 {
+    font-size: 28px;
+    color: #e91e8c;
+    margin-bottom: 10px;
+}
+
+.feedback-header p {
+    font-size: 14px;
+    color: #888;
+    line-height: 1.6;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.submit-btn {
+    width: 100%;
+    background-color: #e91e8c;
+    color: white;
+    padding: 14px;
+    font-size: 16px;
+    border-radius: 10px;
+    margin-top: 20px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.submit-btn:hover {
+    background-color: #c2185b;
+}
+
+.error-msg {
+    color: #f44336;
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+.success-msg {
+    color: #4caf50;
+    font-size: 13px;
+    margin-top: 10px;
+}
