@@ -57,7 +57,6 @@ return(
         </div>
 
         <p className='stats-bar'>Total Feedback: {feedbackList.length}</p>
-        
         {error && <p className='error-msg'>{error}</p>}
 
         {feedbackList.length === 0 ? (
