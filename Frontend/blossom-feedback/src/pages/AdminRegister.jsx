@@ -17,7 +17,13 @@ function AdminRegister(){
             setError('Please fill in all fields');
             return;
         }
-
+        else if(password.length<6){
+            setError('Thats not a secure password please enter a password with length of 6')
+        }
+        if (!email.endsWith('@code-blossom.com')) {
+        setError('Only Code Blossom emails allowed');
+        return;
+       }
         try {
             const response = await fetch('http://localhost:3000/api/admin/register', {
                 method: 'POST',
@@ -32,7 +38,6 @@ function AdminRegister(){
             if (response.ok) {
                 setSuccess('Registration successful! Redirecting to login...');
                 setError('');
-                // Redirect to login after 2 seconds
                 setTimeout(() => {
                     navigate('/login');
                 }, 2000);
@@ -59,7 +64,7 @@ function AdminRegister(){
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        placeholder="Enter your email"
+                        placeholder="Enter the valid code blossom email"
                     />
                 </div>
 

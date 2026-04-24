@@ -51,15 +51,3 @@
 .submit-btn:hover {
     background-color: #c2185b;
 }
-
-.error-msg {
-    color: #f44336;
-    font-size: 13px;
-    margin-top: 10px;
-}
-
-.success-msg {
-    color: #4caf50;
-    font-size: 13px;
-    margin-top: 10px;
-}

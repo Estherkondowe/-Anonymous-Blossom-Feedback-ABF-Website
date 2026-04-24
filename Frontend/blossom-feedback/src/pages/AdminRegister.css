@@ -17,7 +17,6 @@
     box-shadow: 0 8px 30px rgba(233, 30, 140, 0.15);
 }
 
-/* Register Header */
 .register-header {
     text-align: center;
     margin-bottom: 30px;
@@ -56,25 +55,6 @@
 .register-btn:hover {
     background-color: #c2185b;
 }
-
-
-.error-msg {
-    color: #f44336;
-    font-size: 13px;
-    margin-top: 10px;
-}
-
-
-.success-msg {
-    color: #4caf50;
-    font-size: 13px;
-    margin-top: 10px;
-    text-align: center;
-    padding: 10px;
-    background-color: #f1f8e9;
-    border-radius: 8px;
-}
-
 
 .login-link {
     text-align: center;

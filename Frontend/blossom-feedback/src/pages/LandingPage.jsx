@@ -1,29 +1,23 @@
 import { useNavigate } from 'react-router-dom';
 import './LandingPage.css';
+import Navbar from '../components/Navbar';
 import blossomBg from '../images/background.jpg';
+import Footer from '../components/Footer';
+
 
 function LandingPage() {
     const navigate = useNavigate();
 
     return (
         <div className="landing-container">
-
-            {/* Navbar */}
-            <nav className="navbar">
-                <h2 className="logo">🌸 ABF</h2>
-                <button className="nav-btn" onClick={() => navigate('/feedback')}>
-                    Submit Feedback
-                </button>
-            </nav>
-
-            {/* Hero Section */}
+            <Navbar/>
             <section className="hero" style={{ backgroundImage: `url(${blossomBg})` }}>
                 <div className="hero-overlay">
                     <h1 className="hero-title">Your Voice Matters.</h1>
                     <h1 className="hero-title">Speak Freely. 🌸</h1>
                     <p className="hero-subtitle">
                         A safe space for Code Blossom participants to share 
-                        honest feedback — no account needed, completely anonymous.
+                        honest feedback, no account needed, its completely anonymous.
                     </p>
                     <p className="hero-inspired">
                         Inspired by Marion's call for honest feedback at every All Hands Call 🌸
@@ -36,7 +30,6 @@ function LandingPage() {
                 </div>
             </section>
 
-            {/* Value Section */}
             <section className="values-section">
                 <h2>Why Anonymous Blossom Feedback?</h2>
                 <div className="values-grid">
@@ -58,7 +51,6 @@ function LandingPage() {
                 </div>
             </section>
 
-            {/* How It Works Section */}
             <section className="how-section">
                 <h2>How It Works</h2>
                 <div className="steps-grid">
@@ -80,7 +72,6 @@ function LandingPage() {
                 </div>
             </section>
 
-            {/* Final CTA Section */}
             <section className="cta-section">
                 <h2>Ready to Share Your Thoughts?</h2>
                 <p>It takes less than 2 minutes and makes a real difference 🌸</p>
@@ -88,16 +79,7 @@ function LandingPage() {
                     Submit Feedback Now
                 </button>
             </section>
-
-            {/* Footer */}
-            <footer className="footer">
-                <p>© 2025 Anonymous Blossom Feedback | Built for Code Blossom 🌸</p>
-                <div className="footer-links">
-                    <span onClick={() => navigate('/feedback')}>Submit Feedback</span>
-                    <span onClick={() => navigate('/login')}>Admin Login</span>
-                    <span onClick={() => navigate('/register')}>Admin Register</span>
-                </div>
-            </footer>
+            <Footer/>
 
         </div>
     );

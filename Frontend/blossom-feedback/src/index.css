@@ -45,3 +45,16 @@ label {
     display: block;
     margin-top: 15px;
 }
+.error-msg {
+    color: #f44336 !important;
+    font-size: 14px;
+    margin-top: 10px;
+    display: block;
+}
+
+.success-msg {
+    color:#4caf50 !important;
+    font-size:14px;
+    margin-top:10px;
+    display: block;
+}

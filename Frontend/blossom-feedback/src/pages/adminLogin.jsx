@@ -17,6 +17,10 @@ function AdminLogin(){
             setError('Please fill in all fields');
             return;
         }
+        if (!email.endsWith('@code-blossom.com')) {
+        setError('Only Code Blossom emails allowed');
+        return;
+    }
 
         try {
             const response = await fetch('http://localhost:3000/api/admin/login', {
@@ -37,7 +41,7 @@ function AdminLogin(){
             }
 
         } catch (err) {
-            setError('Could not connect to server. Please try again.');
+            setError('connection to server failed. Please try again.');
         }
     };
 
@@ -55,7 +59,7 @@ function AdminLogin(){
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        placeholder="Enter your email"
+                        placeholder="Enter the valid code blossom email"
                     />
                 </div>
 
