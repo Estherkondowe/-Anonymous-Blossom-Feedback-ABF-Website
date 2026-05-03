@@ -25,7 +25,7 @@ function AdminRegister(){
         return;
        }
         try {
-            const response = await fetch('http://localhost:3000/api/admin/register', {
+            const response = await fetch('https://anonymous-blossom-feedback-abf-website.onrender.com/api/admin/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

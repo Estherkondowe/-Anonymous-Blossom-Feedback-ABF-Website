@@ -11,7 +11,7 @@ function AdminDashboard(){
     useEffect(()=>{
         const fetchFeedback=async()=>{
     try{
-        const response= await fetch('http://localhost:3000/api/feedback', {
+        const response= await fetch('https://anonymous-blossom-feedback-abf-website.onrender.com/api/feedback', {
             headers:{'Authorization': `Bearer ${token}`}
         });
         const data =await response.json();
@@ -29,7 +29,7 @@ function AdminDashboard(){
  
  const handleDelete = async (id) => {
         try {
-    const response = await fetch(`http://localhost:3000/api/feedback/${id}`, {
+    const response = await fetch(`https://anonymous-blossom-feedback-abf-website.onrender.com/api/feedback/${id}`, {
     method: 'DELETE',
     headers: {'Authorization': `Bearer ${token}`}
     });
@@ -56,7 +56,7 @@ return(
             <button onClick={logout} className='logout-btn'>Logout</button>
         </div>
 
-        <p className='stats-bar'>Total Feedback: {feedbackList.length}</p>
+        <p className='stats-bar'>Total Feedback: {feedbackList.length}</p>git
         {error && <p className='error-msg'>{error}</p>}
 
         {feedbackList.length === 0 ? (
