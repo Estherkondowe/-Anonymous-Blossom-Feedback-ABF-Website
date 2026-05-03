@@ -8,7 +8,7 @@ const app= express();
 
 
  app.use(express.json());
- app.use(CORS({origin: ['http://localhost:3001','https://anonymous-blossom-feedback-abf-website.netlify.app']}))
+ app.use(cors({origin: ['http://localhost:3001','https://blossom-voices.netlify.app']}));
  
  //routes
  app.use('/api/feedback', feedbackRoutes);
