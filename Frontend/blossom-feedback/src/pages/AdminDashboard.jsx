@@ -56,7 +56,7 @@ return(
             <button onClick={logout} className='logout-btn'>Logout</button>
         </div>
 
-        <p className='stats-bar'>Total Feedback: {feedbackList.length}</p>git
+        <p className='stats-bar'>Total Feedback: {feedbackList.length}</p>
         {error && <p className='error-msg'>{error}</p>}
 
         {feedbackList.length === 0 ? (
