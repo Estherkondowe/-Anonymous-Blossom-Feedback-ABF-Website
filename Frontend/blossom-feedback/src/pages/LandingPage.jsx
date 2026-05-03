@@ -4,10 +4,8 @@ import Navbar from '../components/Navbar';
 import blossomBg from '../images/background.jpg';
 import Footer from '../components/Footer';
 
-
 function LandingPage() {
     const navigate = useNavigate();
-
     return (
         <div className="landing-container">
             <Navbar/>
