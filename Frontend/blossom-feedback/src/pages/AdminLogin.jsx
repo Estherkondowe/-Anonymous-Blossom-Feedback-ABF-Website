@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './AdminLogin.css';
 
 
@@ -7,8 +7,18 @@ function AdminLogin(){
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const [success, setSuccess]= useState('');
 
     const navigate = useNavigate();
+    const location = useLocation();
+
+    // CHECKING IF THE ADMIN HAS VERIFIED THERI EMAIL
+    useEffect(() => {
+        const params = new URLSearchParams(location.search);
+        if (params.get('verified') === 'true') {
+            setSuccess('Email verified successfully! You can now login 🌸');
+        }
+    }, [location]);
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -74,7 +84,7 @@ function AdminLogin(){
                 </div>
 
                 {error && <p className='error-msg'>{error}</p>}
-
+                {success && <p className='success-msg'>{success}</p>}
                 <button type="submit" className='login-btn'>Login🌸</button>
             </form>
             <p className='register-link'>Don't have an account?
