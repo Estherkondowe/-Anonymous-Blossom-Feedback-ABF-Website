@@ -4,12 +4,12 @@ const adminSchema= new  mongoose.Schema({
     email:{
         type:String,
         required: true,
+        unique: true,
         
     },
     password:{
         type: String,
         required:true,
-        unique:true
 
 
     },
@@ -17,6 +17,16 @@ const adminSchema= new  mongoose.Schema({
         type: String,
         default:"admin",
 
+    },
+     isVerified: {
+        type: Boolean,
+        default: false,  
+    },
+    confirmationToken: {
+        type: String,      
+    },
+    tokenExpiry: {
+        type: Date,        
     }
 })
 module.exports= mongoose.model('admin', adminSchema);
