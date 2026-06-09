@@ -1,3 +1,4 @@
+import API_URL from '../config';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './AdminRegister.css';
@@ -20,12 +21,12 @@ function AdminRegister(){
         else if(password.length<6){
             setError('Thats not a secure password please enter a password with length of 6')
         }
-        if (!email.endsWith('@code-blossom.com')) {
-        setError('Only Code Blossom emails allowed');
-        return;
-       }
+          if (!email.endsWith('@code-blossom.com')) {
+          setError('Only Code Blossom emails allowed');
+          return;
+         }
         try {
-            const response = await fetch('https://anonymous-blossom-feedback-abf-website.onrender.com/api/admin/register', {
+            const response = await fetch(`${API_URL}/api/admin/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -36,11 +37,10 @@ function AdminRegister(){
             const data = await response.json();
 
             if (response.ok) {
-                setSuccess('Registration successful! Redirecting to login...');
+                setSuccess('Registration successful! Please check your email to confirm your account🌸');
                 setError('');
-                setTimeout(() => {
-                    navigate('/login');
-                }, 2000);
+                setEmail('');
+                setPassword('');
             } else {
                 setError(data.error || 'Registration failed');
             }

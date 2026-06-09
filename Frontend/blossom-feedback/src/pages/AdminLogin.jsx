@@ -1,3 +1,4 @@
+import API_URL from '../config';
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './AdminLogin.css';
@@ -27,13 +28,13 @@ function AdminLogin(){
             setError('Please fill in all fields');
             return;
         }
-        if (!email.endsWith('@code-blossom.com')) {
-        setError('Only Code Blossom emails allowed');
-        return;
+          if (!email.endsWith('@code-blossom.com')) {
+          setError('Only Code Blossom emails allowed');
+          return;
     }
 
         try {
-            const response = await fetch('https://anonymous-blossom-feedback-abf-website.onrender.com/api/admin/login', {
+            const response = await fetch(`${API_URL}/api/admin/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
