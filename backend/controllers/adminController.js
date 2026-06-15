@@ -11,8 +11,17 @@ const sendConfirmationEmail=require('../config/emailService');
 
         if (!email || !password)
             return res.status(400).json({ error: 'Email and password required' });
-      
-          const existing = await Admin.findOne({ email });
+
+        const testEmails = process.env.TEST_EMAILS
+                    ? process.env.TEST_EMAILS.split(',').map(e => e.trim())
+                    : [];
+
+        const isAllowed = email.endsWith('@code-blossom.com') || testEmails.includes(email);
+
+                if (!isAllowed)
+                    return res.status(403).json({ error: 'Only Code Blossom emails are allowed' });
+            
+        const existing = await Admin.findOne({ email });
           if (existing) return res.status(400).json({ error: 'Admin already exists' });
       
 
@@ -33,8 +42,18 @@ const sendConfirmationEmail=require('../config/emailService');
         await admin.save();
 
     // sending email code
-    await sendConfirmationEmail(email, confirmationToken);
-    
+        try {
+        await sendConfirmationEmail(email, confirmationToken);
+
+        console.log('confirmation email sent to:', email);
+
+        } catch (emailErr) {
+        console.error('email sending failed:', emailErr.message);
+        
+        await Admin.deleteOne({ email });
+        return res.status(500).json({ error: 'Failed to send confirmation email. Please try again.' });
+        }
+        
     res.status(201).json({message:'Registration successiful! Please check your email to confirm your account 🌸'});
     }catch(err){
         console.error(err);
