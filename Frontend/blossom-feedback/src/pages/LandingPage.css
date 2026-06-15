@@ -1,45 +1,7 @@
-/* General */
 .landing-container {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #333;
 }
-
-/* Navbar */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 40px;
-    background-color: white;
-    box-shadow: 0 2px 10px rgba(233, 30, 140, 0.1);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-
-.logo {
-    font-size: 22px;
-    color: #e91e8c;
-    font-weight: 700;
-}
-
-.nav-btn {
-    background-color: #e91e8c;
-    color: white;
-    padding: 10px 22px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 600;
-    transition: background-color 0.3s ease;
-}
-
-.nav-btn:hover {
-    background-color: #c2185b;
-}
-
-/* Hero Section */
 .hero {
     background-size: cover;
     background-position: center;
@@ -100,7 +62,6 @@
     background-color: #c2185b;
 }
 
-/* Values Section */
 .values-section {
     padding: 70px 40px;
     text-align: center;
@@ -148,7 +109,6 @@
     line-height: 1.6;
 }
 
-/* How It Works Section */
 .how-section {
     padding: 70px 40px;
     text-align: center;
@@ -202,7 +162,6 @@
     line-height: 1.6;
 }
 
-/* CTA Section */
 .cta-section {
     padding: 70px 40px;
     text-align: center;
@@ -221,33 +180,4 @@
     margin-bottom: 30px;
 }
 
-/* Footer */
-.footer {
-    background-color: #880e4f;
-    color: white;
-    text-align: center;
-    padding: 30px 40px;
-}
 
-.footer p {
-    font-size: 14px;
-    margin-bottom: 15px;
-}
-
-.footer-links {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-}
-
-.footer-links span {
-    font-size: 13px;
-    color: #fce4ec;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.footer-links span:hover {
-    color: white;
-    text-decoration: underline;
-}

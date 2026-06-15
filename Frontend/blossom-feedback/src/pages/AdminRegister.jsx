@@ -20,6 +20,7 @@ function AdminRegister(){
         }
         else if(password.length<6){
             setError('Thats not a secure password please enter a password with length of 6')
+            return;
         }
           if (!email.endsWith('@code-blossom.com')) {
           setError('Only Code Blossom emails allowed');
