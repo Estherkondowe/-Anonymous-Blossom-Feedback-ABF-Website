@@ -1,18 +1,12 @@
-const nodemailer = require('nodemailer');
+const { Resend } = require('resend');
 
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-    }
-});
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const sendConfirmationEmail = async (email, token) => {
     const confirmationUrl = `${process.env.BACKEND_URL}/api/admin/verify/${token}`;
 
-    const mailOptions = {
-        from: process.env.EMAIL_USER,
+    await resend.emails.send({
+        from: 'ABF <onboarding@resend.dev>',
         to: email,
         subject: '🌸 Confirm Your ABF Admin Account',
         html: `
@@ -38,9 +32,7 @@ const sendConfirmationEmail = async (email, token) => {
                 <p style="color: #888; font-size: 12px;">Built for Code Blossom</p>
             </div>
         `
-    };
-
-    await transporter.sendMail(mailOptions);
+    });
 };
 
 module.exports = sendConfirmationEmail;
