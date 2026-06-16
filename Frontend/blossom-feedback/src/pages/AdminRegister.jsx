@@ -22,10 +22,12 @@ function AdminRegister(){
             setError('Thats not a secure password please enter a password with length of 6')
             return;
         }
-          if (!email.endsWith('@code-blossom.com')  && !email.endsWith('@gmail.com')) {
-          setError('Only Code Blossom emails allowed');
-          return;
-         }
+        const allowedTestEmails = ['kondoweesther2@gmail.com'];
+
+        if (!email.endsWith('@code-blossom.com') && !allowedTestEmails.includes(email)) {
+            setError('Only Code Blossom emails allowed');
+            return;
+        }
         try {
             const response = await fetch(`${API_URL}/api/admin/register`, {
                 method: 'POST',

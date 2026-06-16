@@ -32,12 +32,12 @@ function AdminLogin(){
             return;
         }
          
-       /* const testEmails = ['kondoweesther2@gmail.com'];
+       const allowedTestEmails = ['kondoweesther2@gmail.com'];
 
-        if (!email.endsWith('@code-blossom.com') && !testEmails.includes(email)) {
+        if (!email.endsWith('@code-blossom.com') && !allowedTestEmails.includes(email)) {
             setError('Only Code Blossom emails allowed');
             return;
-        }*/
+        }
         try {
             const response = await fetch(`${API_URL}/api/admin/login`, {
                 method: 'POST',
