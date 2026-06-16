@@ -23,16 +23,21 @@ function AdminLogin(){
 
     const handleLogin = async (e) => {
         e.preventDefault();
+        setError('');
+        setSuccess('');
+        console.log('login attempted with:', email);
 
         if (!email || !password) {
             setError('Please fill in all fields');
             return;
         }
-          if (!email.endsWith('@code-blossom.com')) {
-          setError('Only Code Blossom emails allowed');
-          return;
-    }
+         
+       /* const testEmails = ['kondoweesther2@gmail.com'];
 
+        if (!email.endsWith('@code-blossom.com') && !testEmails.includes(email)) {
+            setError('Only Code Blossom emails allowed');
+            return;
+        }*/
         try {
             const response = await fetch(`${API_URL}/api/admin/login`, {
                 method: 'POST',

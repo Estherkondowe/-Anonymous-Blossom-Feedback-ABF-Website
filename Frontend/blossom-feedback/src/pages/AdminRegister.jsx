@@ -22,7 +22,7 @@ function AdminRegister(){
             setError('Thats not a secure password please enter a password with length of 6')
             return;
         }
-          if (!email.endsWith('@code-blossom.com')) {
+          if (!email.endsWith('@code-blossom.com')  && !email.endsWith('@gmail.com')) {
           setError('Only Code Blossom emails allowed');
           return;
          }
@@ -59,7 +59,7 @@ function AdminRegister(){
             <p>Create your admin account</p>
         </div> 
             <form onSubmit={handleRegister}>
-                <div className='form-groug'>
+                <div className='form-group'>
                     <label>Email</label>
                     <input
                         type="email"
