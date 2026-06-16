@@ -9,6 +9,7 @@ function AdminLogin(){
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [success, setSuccess]= useState('');
+    const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -38,6 +39,9 @@ function AdminLogin(){
             setError('Only Code Blossom emails allowed');
             return;
         }
+        
+        setLoading(true);
+        
         try {
             const response = await fetch(`${API_URL}/api/admin/login`, {
                 method: 'POST',
@@ -58,6 +62,8 @@ function AdminLogin(){
 
         } catch (err) {
             setError('connection to server failed. Please try again.');
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -91,7 +97,7 @@ function AdminLogin(){
 
                 {error && <p className='error-msg'>{error}</p>}
                 {success && <p className='success-msg'>{success}</p>}
-                <button type="submit" className='login-btn'>Login🌸</button>
+                <button type="submit" className='login-btn' disabled={loading}>{loading ? 'Logging in...' : 'Login🌸'}</button>
             </form>
             <p className='register-link'>Don't have an account?
             <span onClick={() => navigate('/register')}> Register here</span>

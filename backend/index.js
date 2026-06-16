@@ -7,8 +7,11 @@ const cors= require('cors')
 const app= express();
 
 
- app.use(express.json());
- app.use(cors({origin: ['http://localhost:3001','https://blossom-voices.netlify.app']}));
+app.use(express.json());
+// Allow localhost, existing Netlify preview, and a configured FRONTEND_URL (e.g. Vercel)
+const allowedOrigins = ['http://localhost:3001', 'https://blossom-voices.netlify.app'];
+if (process.env.FRONTEND_URL) allowedOrigins.push(process.env.FRONTEND_URL);
+app.use(cors({ origin: allowedOrigins }));
  
  //routes
  app.use('/api/feedback', feedbackRoutes);

@@ -5,8 +5,8 @@ const submitFeedback= async(req,res)=>{
     try{
         const {session, mentor, message, rating}=req.body;
 
-        if(!session ||!message){
-            return res.status(400).json({error:'session and messages are required'})
+        if (!session || !mentor || !message) {
+            return res.status(400).json({ error:'session, mentor and message are required' });
         }
         const feedback = new Feedback({session, mentor, message, rating});
         await feedback.save();

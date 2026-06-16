@@ -1,3 +1,4 @@
+import API_URL from '../config';
 import {useState, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
 import './AdminDashboard.css'
@@ -11,7 +12,7 @@ function AdminDashboard(){
     useEffect(()=>{
         const fetchFeedback=async()=>{
     try{
-        const response= await fetch('https://anonymous-blossom-feedback-abf-website.onrender.com/api/feedback', {
+        const response= await fetch(`${API_URL}/api/feedback`, {
             headers:{'Authorization': `Bearer ${token}`}
         });
         const data =await response.json();
@@ -29,7 +30,7 @@ function AdminDashboard(){
  
  const handleDelete = async (id) => {
         try {
-    const response = await fetch(`https://anonymous-blossom-feedback-abf-website.onrender.com/api/feedback/${id}`, {
+    const response = await fetch(`${API_URL}/api/feedback/${id}`, {
     method: 'DELETE',
     headers: {'Authorization': `Bearer ${token}`}
     });

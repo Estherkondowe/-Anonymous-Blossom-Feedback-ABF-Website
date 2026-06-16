@@ -3,7 +3,7 @@ const { Resend } = require('resend');
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 const sendConfirmationEmail = async (email, token) => {
-    const confirmationUrl = `${process.env.BACKEND_URL}/api/admin/verify/${token}`;
+    const confirmationUrl = `${process.env.BACKEND_URL}/api/admin/verify?token=${token}`;
 
     await resend.emails.send({
         from: 'ABF <onboarding@resend.dev>',

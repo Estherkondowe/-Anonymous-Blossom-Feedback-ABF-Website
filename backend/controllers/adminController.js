@@ -63,9 +63,9 @@ const sendConfirmationEmail=require('../config/emailService');
    // verify email function
    const verifyEmail= async (req, res) =>{
         try{
-            const {token} = req.params;
+            const { token } = req.query;
             const admin=await Admin.findOne({
-                confirmationToken:token,
+                confirmationToken: token,
                 tokenExpiry: {$gt: new Date()}
             });
             if(!admin){

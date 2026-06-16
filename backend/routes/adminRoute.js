@@ -7,7 +7,7 @@ const protect = require('../middleware/authMid');
 // Public routes
 router.post('/register', registerAdmin);
 router.post('/login', loginAdmin);
-router.get('/verify/:token', verifyEmail);
+router.get('/verify', verifyEmail);
 
 // Protected route
 router.get('/profile', protect, getProfile);

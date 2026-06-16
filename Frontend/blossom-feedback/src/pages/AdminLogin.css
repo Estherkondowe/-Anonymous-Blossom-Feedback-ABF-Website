@@ -54,6 +54,11 @@
     background-color: #c2185b;
 }
 
+.login-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
 .register-link {
     text-align: center;
     margin-top: 20px;

@@ -8,6 +8,7 @@ function AdminRegister(){
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
 
@@ -28,6 +29,10 @@ function AdminRegister(){
             setError('Only Code Blossom emails allowed');
             return;
         }
+        
+        setLoading(true);
+        setError('');
+        
         try {
             const response = await fetch(`${API_URL}/api/admin/register`, {
                 method: 'POST',
@@ -50,6 +55,8 @@ function AdminRegister(){
 
         } catch (err) {
             setError('Could not connect to server. Please try again.');
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -84,7 +91,7 @@ function AdminRegister(){
                 {error && <p className='error-msg'>{error}</p>}
                 {success && <p className='success-msg'>{success}</p>}
 
-                <button type="submit" className='register-btn'>Register🌸</button>
+                <button type="submit" className='register-btn' disabled={loading}>{loading ? 'Registering...' : 'Register🌸'}</button>
             </form>
 
             <p className='login-link'>Already have an account? 

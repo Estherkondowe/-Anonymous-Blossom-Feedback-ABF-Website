@@ -1,4 +1,5 @@
 import { useState } from "react";
+import API_URL from '../config';
 //import { useNavigate } from "react-router-dom";
 import './FeedbackForm.css';
 
@@ -11,6 +12,7 @@ function FeedbackForm(){
     const [rating, setRating]=useState('');
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
+    const [loading, setLoading] = useState(false);
     //const navigate=useNavigate();
 
     const handleSubmit = async (e) => {
@@ -21,8 +23,12 @@ function FeedbackForm(){
             return;
         }
 
+        setLoading(true);
+        setError('');
+        setSuccess('');
+
         try {
-            const response = await fetch('https://anonymous-blossom-feedback-abf-website.onrender.com/api/feedback', {
+            const response = await fetch(`${API_URL}/api/feedback`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -45,6 +51,8 @@ function FeedbackForm(){
 
         } catch (err) {
             setError('sory  server connection failed . Please try again.');
+        } finally {
+            setLoading(false);
         }
     };
     return(
@@ -85,7 +93,7 @@ function FeedbackForm(){
                     />
                 </div>
 
-                <div form-group>
+                    <div className="form-group">
                     <label>How would you rate your experience with Code Blossom? (1-5)</label>
                     <input 
                         type="number"
@@ -99,7 +107,7 @@ function FeedbackForm(){
                 {error && <p className="error-msg">{error}</p>}
                 {success && <p className="success-msg">{success}</p>}
 
-                <button type="submit">Submit Feedback 🌸</button>
+                <button type="submit" disabled={loading}>{loading ? 'Submitting...' : 'Submit Feedback 🌸'}</button>
             </form>
 
         </div>
