@@ -6,8 +6,8 @@ A safe, anonymous feedback platform built for Code Blossom participants. Inspire
 
 ## 🌸 Live Demo
 
-- **Frontend:** https://blossom-voices.netlify.app
-- **Backend:** https://anonymous-blossom-feedback-abf-website.onrender.com
+- **Frontend:**https://blossom-feedback.vercel.app
+- **Backend:** https://anonymous-blossom-feedback-abf-website-1.onrender.com
 
 ---
 
@@ -38,7 +38,7 @@ Admins can securely login to view, manage and delete feedback through a protecte
 | Backend | Node.js + Express |
 | Database | MongoDB Atlas |
 | Authentication | JWT |
-| Frontend Hosting | Netlify |
+| Frontend Hosting | Vercel |
 | Backend Hosting | Render |
 
 ---
