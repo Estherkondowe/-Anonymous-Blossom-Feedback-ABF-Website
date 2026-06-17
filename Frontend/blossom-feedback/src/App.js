@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Analytics } from "@vercel/analytics/react";
 import LandingPage from './pages/LandingPage.jsx';
 import FeedbackForm from './pages/FeedbackForm.jsx';
 import AdminLogin from './pages/AdminLogin.jsx';
