@@ -10,7 +10,6 @@ const Footer= ()=>{
                 <div className="footer-links">
                     <span onClick={() => navigate('/feedback')}>Submit Feedback</span>
                     <span onClick={() => navigate('/login')}>Admin Login</span>
-                    <span onClick={() => navigate('/register')}>Admin Register</span>
                 </div>
             </footer>
  );
