@@ -12,7 +12,7 @@ const app= express();
 
 
  app.use(express.json());
- app.use(cors({origin: ['http://localhost:3001','https://blossom-voices.netlify.app'],
+ app.use(cors({origin: ['http://localhost:3001','https://blossom-feedback.vercel.app'],
     credentials: true
  }));
 
