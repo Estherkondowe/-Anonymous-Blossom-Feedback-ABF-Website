@@ -8,7 +8,7 @@ function AdminLogin() {
                 <h1>🌸 Admin Login</h1>
                 <p>Sign in with your Code Blossom Google account</p>
             </div>
-            <a href='https://anonymous-blossom-feedback-abf-website.onrender.com/api/auth/google' className='google-btn'>
+            <a href='https://anonymous-blossom-feedback-abf-website-1.onrender.com/api/auth/google' className='google-btn'>
                 <img
                     src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" width="20"
                 />
