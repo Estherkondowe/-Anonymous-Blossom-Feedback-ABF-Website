@@ -1,108 +1,23 @@
-import API_URL from '../config';
-import { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
 import './AdminLogin.css';
 
-
-function AdminLogin(){
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
-    const [success, setSuccess]= useState('');
-    const [loading, setLoading] = useState(false);
-
-    const navigate = useNavigate();
-    const location = useLocation();
-
-    // CHECKING IF THE ADMIN HAS VERIFIED THERI EMAIL
-    useEffect(() => {
-        const params = new URLSearchParams(location.search);
-        if (params.get('verified') === 'true') {
-            setSuccess('Email verified successfully! You can now login 🌸');
-        }
-    }, [location]);
-
-    const handleLogin = async (e) => {
-        e.preventDefault();
-        setError('');
-        setSuccess('');
-        console.log('login attempted with:', email);
-
-        if (!email || !password) {
-            setError('Please fill in all fields');
-            return;
-        }
-         
-       const allowedTestEmails = ['kondoweesther2@gmail.com'];
-
-        if (!email.endsWith('@code-blossom.com') && !allowedTestEmails.includes(email)) {
-            setError('Only Code Blossom emails allowed');
-            return;
-        }
-        
-        setLoading(true);
-        
-        try {
-            const response = await fetch(`${API_URL}/api/admin/login`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ email, password })
-            });
-
-            const data = await response.json();
-
-            if (response.ok) {
-                localStorage.setItem('token', data.token);
-                navigate('/dashboard');
-            } else {
-                setError(data.error || 'Login failed');
-            }
-
-        } catch (err) {
-            setError('connection to server failed. Please try again.');
-        } finally {
-            setLoading(false);
-        }
-    };
-
-    return(
+function AdminLogin() {
+    return (
         <div className='login-container'>
-         <div className='login-card'>   
-        <div className='login-header'>
-            <h1>🌸 Welcome to the Login page Admin!</h1>
-            <p>Login to view and manage feedback</p>
-         </div>
-            <form onSubmit={handleLogin}>
-                <div className='form-group'>
-                    <label>Email</label>
-                    <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="Enter the valid code blossom email"
-                    />
-                </div>
-
-                <div className='form-group'>
-                    <label>Password</label>
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        placeholder="Enter your password"
-                    />
-                </div>
-
-                {error && <p className='error-msg'>{error}</p>}
-                {success && <p className='success-msg'>{success}</p>}
-                <button type="submit" className='login-btn' disabled={loading}>{loading ? 'Logging in...' : 'Login🌸'}</button>
-            </form>
-            <p className='register-link'>Don't have an account?
-            <span onClick={() => navigate('/register')}> Register here</span>
-            </p>
-        </div>
+            <div className='login-card'>
+            <div className='login-header'>
+                <h1>🌸 Admin Login</h1>
+                <p>Sign in with your Code Blossom Google account</p>
+            </div>
+            <a href='https://anonymous-blossom-feedback-abf-website.onrender.com/api/auth/google' className='google-btn'>
+                <img
+                    src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" width="20"
+                />
+                Sign in with Google
+            </a>
+                <p className='login-footer'>
+                    For admins only. Participants don't need to login 🌸
+                </p>
+            </div>
         </div>
     );
 }

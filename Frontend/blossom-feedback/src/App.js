@@ -3,7 +3,6 @@ import LandingPage from './pages/LandingPage.jsx';
 import FeedbackForm from './pages/FeedbackForm.jsx';
 import AdminLogin from './pages/AdminLogin.jsx';
 import AdminDashboard from './pages/AdminDashboard.jsx';
-import AdminRegister from './pages/AdminRegister.jsx'; 
 import ProtectedRoute from './components/ProtectedRoute.jsx';
 
 
@@ -15,7 +14,7 @@ function  App(){
         <Route path="/feedback" element={<FeedbackForm />} />
         <Route path="/login" element={<AdminLogin />} />
         <Route path="/dashboard" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
-        <Route path="/register" element={<AdminRegister/>}/>
+      
       </Routes>
     </BrowserRouter>
   );

@@ -4,18 +4,30 @@ const connectToDb= require('./config/db_connection');
 const feedbackRoutes= require('./routes/feedbackRoute')
 const adminRoutes= require('./routes/adminRoute')
 const cors= require('cors')
+const passport = require('./config/passport');
+const session = require('express-session');
+const authRoute = require('./routes/authRoute');
+
 const app= express();
 
 
-app.use(express.json());
-// Allow localhost, existing Netlify preview, and a configured FRONTEND_URL (e.g. Vercel)
-const allowedOrigins = ['http://localhost:3001', 'https://blossom-voices.netlify.app'];
-if (process.env.FRONTEND_URL) allowedOrigins.push(process.env.FRONTEND_URL);
-app.use(cors({ origin: allowedOrigins }));
+ app.use(express.json());
+ app.use(cors({origin: ['http://localhost:3001','https://blossom-voices.netlify.app'],
+    credentials: true
+ }));
+
+ app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
  
  //routes
  app.use('/api/feedback', feedbackRoutes);
  app.use('/api/admin', adminRoutes);
+ app.use('/api/auth', authRoute);
 
 
 

@@ -76,3 +76,36 @@
 .register-link span:hover {
     text-decoration: underline;
 }
+.google-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background-color: white;
+    color: #333;
+    border: 2px solid #e0e0e0;
+    padding: 14px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 20px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.google-btn:hover {
+    background-color: #f5f5f5;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+}
+
+.login-footer {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 12px;
+    color: #aaa;
+    line-height: 1.6;
+}

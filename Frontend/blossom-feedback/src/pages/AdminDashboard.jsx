@@ -1,4 +1,3 @@
-import API_URL from '../config';
 import {useState, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
 import './AdminDashboard.css'
@@ -9,10 +8,21 @@ function AdminDashboard(){
     const navigate= useNavigate();
     const token =localStorage.getItem('token');
 
+   // captures the token from URL AFTER Google login
+    useEffect(() => {
+        const params = new URLSearchParams(window.location.search);
+        const token = params.get('token');
+
+        if (token) {
+            localStorage.setItem('token', token);
+            window.history.replaceState({}, document.title, '/dashboard');
+        }
+    }, []);
+
     useEffect(()=>{
         const fetchFeedback=async()=>{
     try{
-        const response= await fetch(`${API_URL}/api/feedback`, {
+        const response=await fetch('http://localhost:3000/api/feedback', {
             headers:{'Authorization': `Bearer ${token}`}
         });
         const data =await response.json();
@@ -30,7 +40,7 @@ function AdminDashboard(){
  
  const handleDelete = async (id) => {
         try {
-    const response = await fetch(`${API_URL}/api/feedback/${id}`, {
+    const response = await fetch(`http://localhost:3000/api/feedback/${id}` ,{
     method: 'DELETE',
     headers: {'Authorization': `Bearer ${token}`}
     });

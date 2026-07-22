@@ -18,15 +18,6 @@ const adminSchema= new  mongoose.Schema({
         default:"admin",
 
     },
-     isVerified: {
-        type: Boolean,
-        default: false,  
-    },
-    confirmationToken: {
-        type: String,      
-    },
-    tokenExpiry: {
-        type: Date,        
-    }
+     
 })
 module.exports= mongoose.model('admin', adminSchema);
