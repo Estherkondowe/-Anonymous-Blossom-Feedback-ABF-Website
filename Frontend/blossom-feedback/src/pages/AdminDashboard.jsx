@@ -22,7 +22,7 @@ function AdminDashboard(){
     useEffect(()=>{
         const fetchFeedback=async()=>{
     try{
-        const response=await fetch('http://localhost:3000/api/feedback', {
+        const response=await fetch('${process.env.REACT_APP_API_URL}/api/feedback', {
             headers:{'Authorization': `Bearer ${token}`}
         });
         const data =await response.json();
@@ -40,7 +40,7 @@ function AdminDashboard(){
  
  const handleDelete = async (id) => {
         try {
-    const response = await fetch(`http://localhost:3000/api/feedback/${id}` ,{
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/feedback/${id}` ,{
     method: 'DELETE',
     headers: {'Authorization': `Bearer ${token}`}
     });

@@ -12,11 +12,6 @@ const app = express();
 app.set('trust proxy', 1);
 app.use(cors({
     origin: ['http://localhost:3001', 'https://blossom-feedback.vercel.app'],
-
-
- app.use(express.json());
- app.use(cors({origin: ['http://localhost:3001','https://blossom-feedback.vercel.app'],
->>>>>>> 9390fc0d927d6232ec6bd18e5c2ee11de52c5daa
     credentials: true
 }));
 
