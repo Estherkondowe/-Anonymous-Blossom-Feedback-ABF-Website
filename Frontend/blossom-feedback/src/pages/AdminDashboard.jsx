@@ -22,7 +22,7 @@ function AdminDashboard(){
     useEffect(()=>{
         const fetchFeedback=async()=>{
     try{
-        const response=await fetch('${process.env.REACT_APP_API_URL}/api/feedback', {
+        const response=await fetch(`${process.env.REACT_APP_API_URL}/api/feedback`, {
             headers:{'Authorization': `Bearer ${token}`}
         });
         const data =await response.json();
