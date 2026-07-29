@@ -8,8 +8,6 @@ const passport = require('./config/passport');
 const session = require('express-session');
 const authRoute = require('./routes/authRoute');
 
-
-
 const app = express();
 app.set('trust proxy', 1);
 app.use(cors({
