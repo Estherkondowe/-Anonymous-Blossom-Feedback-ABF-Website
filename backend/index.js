@@ -8,15 +8,18 @@ const passport = require('./config/passport');
 const session = require('express-session');
 const authRoute = require('./routes/authRoute');
 
-const app= express();
 
 
- app.use(express.json());
- app.use(cors({origin: ['http://localhost:3001','https://blossom-feedback.vercel.app'],
+const app = express();
+app.set('trust proxy', 1);
+app.use(cors({
+    origin: ['http://localhost:3001', 'https://blossom-feedback.vercel.app'],
     credentials: true
- }));
+}));
 
- app.use(session({
+app.use(express.json());
+app.use(express.static('public')); 
+app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false
@@ -33,7 +36,7 @@ app.use(passport.session());
 
 async function startServer() {
     await connectToDb();   
-    
+
     app.listen( process.env.PORT, ()=>{
         console.log("Server has started listening to port "+ process.env.PORT)
     })
