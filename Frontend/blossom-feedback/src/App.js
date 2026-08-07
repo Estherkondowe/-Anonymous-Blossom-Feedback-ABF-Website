@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import LandingPage from './pages/LandingPage.jsx';
 import FeedbackForm from './pages/FeedbackForm.jsx';
 import AdminLogin from './pages/AdminLogin.jsx';
@@ -16,6 +17,7 @@ function  App(){
         <Route path="/dashboard" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
       
       </Routes>
+      <SpeedInsights />
     </BrowserRouter>
   );
 }
