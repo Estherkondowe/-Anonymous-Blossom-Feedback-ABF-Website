@@ -28,6 +28,10 @@ app.use(passport.initialize());
 app.use(passport.session());
  
  //routes
+ // Keep Render awake
+app.get('/ping', (req, res) => {
+    res.json({ status: 'awake' });
+});
  app.use('/api/feedback', feedbackRoutes);
  app.use('/api/admin', adminRoutes);
  app.use('/api/auth', authRoute);
