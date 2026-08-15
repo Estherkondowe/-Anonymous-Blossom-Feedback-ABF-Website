@@ -3,6 +3,19 @@ import './AdminLogin.css';
 
 function AdminLogin() {
     const [loading, setLoading]= useState(false);
+    const [error, setError] = useState('');
+
+    // Reading errors from URL when page loads
+    useEffect(() => {
+        const params = new URLSearchParams(window.location.search);
+        const errorParam = params.get('error');
+
+        if (errorParam === 'unauthorized') {
+            setError('Access denied. Only @code-blossom.com Google accounts are allowed 🌸');
+        } else if (errorParam === 'server') {
+            setError('Something went wrong. Please try again.');
+        }
+    }, []);
 
     const  handleGoogleLogin =()=>{
         setLoading(true);
@@ -16,11 +29,13 @@ function AdminLogin() {
                     <p>Sign in with your Code Blossom Google account</p>
                 </div>
 
+                {error && <p className='error-msg'>{error}</p>}
+
                 {loading ? (
                     <div className='loading-container'>
                         <div className='loading-spinner'></div>
                         <p className='loading-text'>
-                            Connecting to server... please wait 🌸
+                            Connecting... please wait 🌸
                         </p>
                     </div>
                 ) : (
@@ -42,6 +57,6 @@ function AdminLogin() {
             </div>
         </div>
     );
-
 }
+
 export default AdminLogin;
