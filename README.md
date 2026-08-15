@@ -6,7 +6,7 @@ A safe, anonymous feedback platform built for Code Blossom participants. Inspire
 
 ## 🌸 Live Demo
 
-- **Frontend:**https://blossom-feedback.vercel.app
+- **Frontend:** https://blossom-feedback.vercel.app
 - **Backend:** https://anonymous-blossom-feedback-abf-website-1.onrender.com
 
 ---
