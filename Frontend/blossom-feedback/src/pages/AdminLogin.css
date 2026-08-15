@@ -136,3 +136,16 @@
     font-size: 14px;
     text-align: center;
 }
+.error-box {
+    background-color: #ffebee;
+    border-radius: 8px;
+    padding: 12px 15px;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.error-box p {
+    color: #f44336;
+    font-size: 13px;
+    line-height: 1.5;
+}

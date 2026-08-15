@@ -11,7 +11,7 @@ function AdminLogin() {
         const errorParam = params.get('error');
 
         if (errorParam === 'unauthorized') {
-            setError('Access denied. Only @code-blossom.com Google accounts are allowed 🌸');
+            setError('Wrong account! Please switch to your @code-blossom.com email.');
         } else if (errorParam === 'server') {
             setError('Something went wrong. Please try again.');
         }
@@ -26,7 +26,7 @@ return (
         <div className='login-card'>
             <div className='login-header'>
                 <h1>🌸 Admin Login</h1>
-                <p>Sign in with your Code Blossom Google account</p>
+                <p>Use your @code-blossom.com Google account</p>
             </div>
 
             {loading ? (
@@ -57,7 +57,7 @@ return (
             )}
 
             <p className='login-footer'>
-                For admins only. Participants don't need to login 🌸
+                💗 This space is for mentors only!
             </p>
         </div>
     </div>
