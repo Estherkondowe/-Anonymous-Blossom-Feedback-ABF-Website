@@ -7,7 +7,7 @@ const cors= require('cors')
 const passport = require('./config/passport');
 const session = require('express-session');
 const authRoute = require('./routes/authRoute');
-
+const formRoutes = require('./routes/formRoutes');
 const app = express();
 app.set('trust proxy', 1);
 app.use(cors({
@@ -35,7 +35,7 @@ app.get('/ping', (req, res) => {
  app.use('/api/feedback', feedbackRoutes);
  app.use('/api/admin', adminRoutes);
  app.use('/api/auth', authRoute);
-
+ app.use('/api/forms', formRoutes);
 
 
 async function startServer() {

@@ -18,6 +18,12 @@ const adminSchema= new  mongoose.Schema({
         default:"admin",
 
     },
+    googleAceessToken:{
+        type: String,
+    },
+    googleRefreshToken:{
+        type: String,
+    },
      
 })
 module.exports= mongoose.model('admin', adminSchema);

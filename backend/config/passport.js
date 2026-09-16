@@ -13,9 +13,16 @@ async (accessToken, refreshToken, profile, done) => {
     try {
         const email = profile.emails[0].value;
 
+        console.log('Access Token:', accessToken);
+        console.log('Refresh Token:', refreshToken);
+        console.log('Email:', email);
+
         const allowedEmails = ['kondoweesther2@gmail.com'];
-        if (!email.endsWith('@code-blossom.com') && !allowedEmails.includes(email)) {
-            return done(null, false, { message: 'Only Code Blossom emails allowed' });
+        if (!email.endsWith('@code-blossom.com') &&
+            !allowedEmails.includes(email)) {
+            return done(null, false, {
+                message: 'Only Code Blossom emails allowed'
+            });
         }
 
         let admin = await Admin.findOne({ email });
@@ -24,18 +31,27 @@ async (accessToken, refreshToken, profile, done) => {
             admin = new Admin({
                 email,
                 password: 'google-auth',
-                role: 'admin'
+                role: 'admin',
+                googleAccessToken: accessToken,
+                googleRefreshToken: refreshToken
             });
-            await admin.save();
+        } else {
+            admin.googleAccessToken = accessToken;
+            admin.googleRefreshToken = refreshToken;
         }
+
+        console.log('Saving admin with token:', admin.googleAccessToken);
+        await admin.save();
+        console.log('Admin saved successfully');
 
         return done(null, admin);
 
     } catch (err) {
+        console.error('Passport error:', err);
         return done(err, null);
     }
-}));
-
+}
+));
 passport.serializeUser((admin, done) => {
     done(null, admin.id);
 });
