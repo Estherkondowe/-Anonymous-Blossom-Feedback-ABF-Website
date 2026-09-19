@@ -1,29 +1,40 @@
-const mongoose= require('mongoose');
+const mongoose = require('mongoose');
 
-const adminSchema= new  mongoose.Schema({
-    email:{
-        type:String,
+const adminSchema = new mongoose.Schema({
+    email: {
+        type: String,
         required: true,
         unique: true,
-        
+        lowercase: true,
+        trim: true
     },
-    password:{
+    name: {
+        type: String
+    },
+    password: {
+        type: String
+    },
+    role: {
         type: String,
-        required:true,
+        enum: ['owner', 'coordinator', 'mentor'],
+        default: 'mentor'
+    },
+    isVerified: {
+        type: Boolean,
+        default: true
+    },
+    active: {
+        type: Boolean,
+        default: true
+    },
+    googleAccessToken: {
+        type: String
+    },
+    googleRefreshToken: {
+        type: String
+    }
+}, {
+    timestamps: true
+});
 
-
-    },
-    role:{
-        type: String,
-        default:"admin",
-
-    },
-    googleAccessToken:{
-        type: String,
-    },
-    googleRefreshToken:{
-        type: String,
-    },
-     
-})
-module.exports= mongoose.model('admin', adminSchema);
+module.exports = mongoose.model('admin', adminSchema);

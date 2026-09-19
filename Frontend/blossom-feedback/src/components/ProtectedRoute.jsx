@@ -1,12 +1,16 @@
-import { Navigate } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 function ProtectedRoute({ children }) {
-    const token = localStorage.getItem('token');
-    const params = new URLSearchParams(window.location.search);
-    const urlToken = params.get('token');
+    const { user, loading } = useAuth();
+    const location = useLocation();
 
-    if (!token && !urlToken) {
-        return <Navigate to="/login" />;
+    if (loading) {
+        return <p className="no-feedback">Loading... 🌸</p>;
+    }
+
+    if (!user) {
+        return <Navigate to="/login" state={{ from: location.pathname }} replace />;
     }
 
     return children;

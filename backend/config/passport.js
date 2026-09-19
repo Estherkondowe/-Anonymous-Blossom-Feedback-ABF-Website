@@ -27,15 +27,17 @@ async (accessToken, refreshToken, profile, done) => {
 
         let admin = await Admin.findOne({ email });
 
+        const role = allowedEmails.includes(email) ? 'owner' : 'mentor';
+
         if (!admin) {
             admin = new Admin({
                 email,
-                password: 'google-auth',
-                role: 'admin',
+                role,
                 googleAccessToken: accessToken,
                 googleRefreshToken: refreshToken
             });
         } else {
+            admin.role = role;
             admin.googleAccessToken = accessToken;
             admin.googleRefreshToken = refreshToken;
         }

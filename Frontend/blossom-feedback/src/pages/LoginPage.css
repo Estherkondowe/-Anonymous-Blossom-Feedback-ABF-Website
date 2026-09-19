@@ -1,0 +1,25 @@
+.or-divider {
+    display: flex;
+    align-items: center;
+    margin: 22px 0 4px;
+    color: #aaa;
+    font-size: 13px;
+    gap: 12px;
+}
+
+.or-divider::before,
+.or-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background-color: #e0e0e0;
+}
+
+.or-divider span {
+    padding: 0 4px;
+}
+
+.login-message {
+    text-align: center;
+    margin-top: 15px;
+}
