@@ -17,7 +17,7 @@ router.get('/google', passport.authenticate('google', {
 router.get('/google/callback',
     passport.authenticate('google', {
         failureRedirect: `${process.env.FRONTEND_URL}/login?error=unauthorized`,
-        session: true  // ← change to true
+        session: true  
     }),
     (req, res) => {
         console.log('Callback reached! User:', req.user);
@@ -35,26 +35,7 @@ router.get('/google/callback',
             res.redirect(`${process.env.FRONTEND_URL}/login?error=server`);
         }
     }
-);router.get('/google/callback',
-    passport.authenticate('google', {
-        failureRedirect: `${process.env.FRONTEND_URL}/login?error=unauthorized`,
-        session: true  // ← change to true
-    }),
-    (req, res) => {
-        try {
-            const token = jwt.sign(
-                { id: req.user._id, email: req.user.email },
-                process.env.JWT_SECRET,
-                { expiresIn: '1h' }
-            );
-
-            res.redirect(`${process.env.FRONTEND_URL}/dashboard?token=${token}`);
-
-        } catch (err) {
-            console.error(err);
-            res.redirect(`${process.env.FRONTEND_URL}/login?error=server`);
-        }
-    }
 );
+
 
 module.exports = router;

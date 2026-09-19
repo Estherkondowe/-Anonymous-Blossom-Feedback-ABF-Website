@@ -18,7 +18,7 @@ const adminSchema= new  mongoose.Schema({
         default:"admin",
 
     },
-    googleAceessToken:{
+    googleAccessToken:{
         type: String,
     },
     googleRefreshToken:{
