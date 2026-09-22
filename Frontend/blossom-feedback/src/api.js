@@ -29,7 +29,7 @@ async function request(path, options = {}) {
     return data;
 }
 
-export default {
+const api = {
     get: (path) => request(path),
     post: (path, body) => request(path, {
         method: 'POST',
@@ -41,3 +41,5 @@ export default {
     }),
     del: (path) => request(path, { method: 'DELETE' })
 };
+
+export default api;
